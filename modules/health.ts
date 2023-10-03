@@ -1,3 +1,15 @@
+/*
+
+TODO:
+- [add] average HRV
+- [add] average sleep performance
+- [add] average calories
+- [add] average HR
+- [add] average RHR
+- [add] average respiratory rate
+
+*/
+
 import { requestHeaders } from "../types/constants";
 
 export class WhoopSDKHealth {
