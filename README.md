@@ -4,6 +4,9 @@
 
 <h4 align="center">Programatically access your health data from your Whoop band.</h4>
 
+# This library vs. [Whoop Developer Center](https://developer.whoop.com/docs/introduction)
+The main goal of this library is to generate requests using a user's login information, not done through OAuth2. While robust, Whoop's native API does not allow nearly as much data to be shared through the API, and requires a tedious process of generating and getting an app approved. If you are looking to create something commercial I reccomend using their platform and not this.
+
 ## Note
 Nothing in this library is stable, tested, or should be considered for use in a production environment. Things will break and change, so use at your own will.
 
@@ -22,7 +25,6 @@ Nothing in this library is stable, tested, or should be considered for use in a 
 | Get logged in user | ✅ | |
 | Get user state | ✅ | needs to be renamed to something more logical |
 | Get achievements | ✅ | |
-| Get recovery 
 
 ### Health Monitor
 | Metric | Covered? | Notes |
