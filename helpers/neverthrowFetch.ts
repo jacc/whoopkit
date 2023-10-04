@@ -1,5 +1,4 @@
-import "cross-fetch/polyfill";
-
+import fetch from "cross-fetch";
 import { ResultAsync } from "neverthrow";
 import { WhoopAsyncResult } from "../types/neverthrow";
 import { requestHeaders } from "../types/constants";

@@ -1,4 +1,3 @@
-import "cross-fetch/polyfill";
 import { WhoopKitAchievements } from "./modules/achievements";
 import { WhoopKitHealth } from "./modules/health";
 import { WhoopKitUser } from "./modules/user";

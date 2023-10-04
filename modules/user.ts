@@ -1,4 +1,3 @@
-import "cross-fetch/polyfill";
 import {
   AuthenticatedUser as WhoopAuthenticatedUser,
   WhoopUserState,
