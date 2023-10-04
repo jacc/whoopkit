@@ -3,15 +3,15 @@ import { ResultAsync } from "neverthrow";
 import { WhoopAsyncResult } from "../types/neverthrow";
 import { requestHeaders } from "../types/constants";
 
-export type neverthrowFetchProps = {
+export type safeFetchProps = {
   init?: RequestInit;
   error?: string;
 };
 
-export const neverthrowFetch = async <T>(
+export const safeFetch = async <T>(
   url: string,
   accessToken?: string,
-  props?: neverthrowFetchProps
+  props?: safeFetchProps
 ): WhoopAsyncResult<T> => {
   const request = await ResultAsync.fromPromise(
     fetch(url, {

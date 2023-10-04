@@ -6,16 +6,8 @@ TODO:
 
 */
 
-import { neverthrowFetch } from "../helpers/neverthrowFetch";
-import { requestHeaders } from "../types/constants";
-import {
-  AverageCalories,
-  AverageHRV,
-  AverageHeartRate,
-  AverageRespiratoryRate,
-  AverageSleepPerformance,
-  Stress,
-} from "../types/health";
+import { safeFetch } from "../helpers/safeFetch";
+import { AverageResponse, Stress } from "../types/health";
 import { WhoopAsyncResult } from "../types/neverthrow";
 
 export class WhoopKitHealth {
@@ -25,12 +17,14 @@ export class WhoopKitHealth {
 
   // TODO: type this
   async getStress(date?: string): WhoopAsyncResult<Stress> {
-    const request = await neverthrowFetch<any>(
+    const request = await safeFetch<any>(
       `https://api.prod.whoop.com/health-service/v2/stress-bff?timestamp=${
         date ? date : new Date().toISOString()
       }`,
       this.accessToken
     );
+
+    console.log(request);
 
     return request.map((res) => ({
       score: res.gauge.gauge_score_display,
@@ -40,8 +34,8 @@ export class WhoopKitHealth {
     }));
   }
 
-  async getAverageHRV(date?: string): WhoopAsyncResult<AverageHRV> {
-    const request = await neverthrowFetch<any>(
+  async getAverageHRV(date?: string): WhoopAsyncResult<AverageResponse> {
+    const request = await safeFetch<any>(
       `https://api.prod.whoop.com/progression-service/v3/trends/HRV?endDate=${
         date ? date : new Date().toISOString().slice(0, 10)
       }`,
@@ -58,9 +52,9 @@ export class WhoopKitHealth {
 
   async getAverageSleepPerformance(
     date?: string
-  ): WhoopAsyncResult<AverageSleepPerformance> {
+  ): WhoopAsyncResult<AverageResponse> {
     // TODO: Type this call
-    const request = await neverthrowFetch<any>(
+    const request = await safeFetch<any>(
       `https://api.prod.whoop.com/progression-service/v3/trends/SLEEP_PERFORMANCE?endDate=${
         date ? date : new Date().toISOString().slice(0, 10)
       }`,
@@ -75,9 +69,9 @@ export class WhoopKitHealth {
     }));
   }
 
-  async getAverageHeartRate(date?: string): WhoopAsyncResult<AverageHeartRate> {
+  async getAverageHeartRate(date?: string): WhoopAsyncResult<AverageResponse> {
     // TODO: Type this call
-    const request = await neverthrowFetch<any>(
+    const request = await safeFetch<any>(
       `https://api.prod.whoop.com/progression-service/v3/trends/AVERAGE_HR?endDate=${
         date ? date : new Date().toISOString().slice(0, 10)
       }`,
@@ -94,8 +88,8 @@ export class WhoopKitHealth {
 
   async getAverageRestingHeartRate(
     date?: string
-  ): WhoopAsyncResult<AverageHeartRate> {
-    const request = await neverthrowFetch<any>(
+  ): WhoopAsyncResult<AverageResponse> {
+    const request = await safeFetch<any>(
       `https://api.prod.whoop.com/progression-service/v3/trends/RHR?endDate=${
         date ? date : new Date().toISOString().slice(0, 10)
       }`,
@@ -110,8 +104,8 @@ export class WhoopKitHealth {
     }));
   }
 
-  async getAverageCalories(date?: string): WhoopAsyncResult<AverageCalories> {
-    const request = await neverthrowFetch<any>(
+  async getAverageCalories(date?: string): WhoopAsyncResult<AverageResponse> {
+    const request = await safeFetch<any>(
       `https://api.prod.whoop.com/progression-service/v3/trends/CALORIES?endDate=${
         date ? date : new Date().toISOString().slice(0, 10)
       }`,
@@ -128,8 +122,8 @@ export class WhoopKitHealth {
 
   async getAverageRespiratoryRate(
     date?: string
-  ): WhoopAsyncResult<AverageRespiratoryRate> {
-    const request = await neverthrowFetch<any>(
+  ): WhoopAsyncResult<AverageResponse> {
+    const request = await safeFetch<any>(
       `https://api.prod.whoop.com/progression-service/v3/trends/RESPIRATORY_RATE?endDate=${
         date ? date : new Date().toISOString().slice(0, 10)
       }`,

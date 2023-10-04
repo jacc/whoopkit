@@ -4,7 +4,7 @@ import { WhoopKitUser } from "./modules/user";
 import { LoggedInUser } from "./types/authorization";
 import { requestHeaders } from "./types/constants";
 import { WhoopAsyncResult } from "./types/neverthrow";
-import { neverthrowFetch } from "./helpers/neverthrowFetch";
+import { safeFetch } from "./helpers/safeFetch";
 
 export class WhoopKit {
   public accessToken: string;
@@ -37,7 +37,7 @@ export class WhoopKit {
     username: string,
     password: string
   ): WhoopAsyncResult<LoggedInUser> {
-    const response = await neverthrowFetch<LoggedInUser>(
+    const response = await safeFetch<LoggedInUser>(
       "https://api-7.whoop.com/oauth/token",
       undefined,
       {
@@ -60,7 +60,7 @@ export class WhoopKit {
       throw new Error("No refresh token provided in constructor.");
     }
 
-    const response = await neverthrowFetch<any>(
+    const response = await safeFetch<any>(
       "https://api-7.whoop.com/oauth/token",
       undefined,
       {

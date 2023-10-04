@@ -5,7 +5,7 @@ import {
 import { requestHeaders } from "../types/constants";
 import { WhoopAsyncResult } from "../types/neverthrow";
 import { ResultAsync } from "neverthrow";
-import { neverthrowFetch } from "../helpers/neverthrowFetch";
+import { safeFetch } from "../helpers/safeFetch";
 
 export class WhoopKitUser {
   constructor(private accessToken: string) {
@@ -13,7 +13,7 @@ export class WhoopKitUser {
   }
 
   async getMe(): WhoopAsyncResult<WhoopAuthenticatedUser> {
-    const request = await neverthrowFetch<WhoopAuthenticatedUser>(
+    const request = await safeFetch<WhoopAuthenticatedUser>(
       "https://api.prod.whoop.com/membership",
       this.accessToken
     );
@@ -22,7 +22,7 @@ export class WhoopKitUser {
   }
 
   async getUserState(): WhoopAsyncResult<WhoopUserState> {
-    const request = await neverthrowFetch<WhoopUserState>(
+    const request = await safeFetch<WhoopUserState>(
       "https://api.prod.whoop.com/activities-service/v1/user-state",
       this.accessToken
     );

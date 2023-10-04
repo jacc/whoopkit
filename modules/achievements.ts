@@ -1,4 +1,4 @@
-import { neverthrowFetch } from "../helpers/neverthrowFetch";
+import { safeFetch } from "../helpers/safeFetch";
 import { WhoopAchievementStreaks } from "../types/achievements";
 import { WhoopAchievementLevel } from "../types/authorization";
 import { requestHeaders } from "../types/constants";
@@ -10,7 +10,7 @@ export class WhoopKitAchievements {
   }
 
   async getUserLevel(userId: string): WhoopAsyncResult<WhoopAchievementLevel> {
-    const request = await neverthrowFetch<WhoopAchievementLevel>(
+    const request = await safeFetch<WhoopAchievementLevel>(
       `https://api.prod.whoop.com/achievements-service/v1/progression/memberLevel?userId=${userId}`,
       this.accessToken
     );
@@ -19,7 +19,7 @@ export class WhoopKitAchievements {
   }
 
   async getStreaks(userId: string): WhoopAsyncResult<WhoopAchievementStreaks> {
-    const request = await neverthrowFetch<WhoopAchievementStreaks>(
+    const request = await safeFetch<WhoopAchievementStreaks>(
       `https://api.prod.whoop.com/achievements-service/v1/streaks/user/${userId}`,
       this.accessToken
     );
