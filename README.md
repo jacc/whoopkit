@@ -1,4 +1,4 @@
-# whoop-sdk
+# whoopkit
 
 A type-safe SDK for accessing Whoop's user API.
 
