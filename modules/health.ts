@@ -138,4 +138,25 @@ export class WhoopKitHealth {
         response.six_month_time_segment.metrics[0].metric_value_display,
     };
   }
+
+  async getAverageRespiratoryRate(date?: string): Promise<any> {
+    const request = await fetch(
+      `https://api.prod.whoop.com/progression-service/v3/trends/RESPIRATORY_RATE?endDate=${
+        date ? date : new Date().toISOString().slice(0, 10)
+      }`,
+      {
+        headers: requestHeaders(this.accessToken),
+      }
+    );
+
+    const response = await request.json();
+
+    return {
+      week_average: response.week_time_segment.metrics[0].metric_value_display,
+      month_average:
+        response.month_time_segment.metrics[0].metric_value_display,
+      six_month_average:
+        response.six_month_time_segment.metrics[0].metric_value_display,
+    };
+  }
 }
