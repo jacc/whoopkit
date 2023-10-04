@@ -10,9 +10,11 @@ import { neverthrowFetch } from "../helpers/neverthrowFetch";
 import { requestHeaders } from "../types/constants";
 import {
   AverageCalories,
+  AverageHRV,
   AverageHeartRate,
   AverageRespiratoryRate,
   AverageSleepPerformance,
+  Stress,
 } from "../types/health";
 import { WhoopAsyncResult } from "../types/neverthrow";
 
@@ -22,7 +24,7 @@ export class WhoopKitHealth {
   }
 
   // TODO: type this
-  async getStress(date?: string): WhoopAsyncResult<any> {
+  async getStress(date?: string): WhoopAsyncResult<Stress> {
     const request = await neverthrowFetch<any>(
       `https://api.prod.whoop.com/health-service/v2/stress-bff?timestamp=${
         date ? date : new Date().toISOString()
@@ -38,7 +40,7 @@ export class WhoopKitHealth {
     }));
   }
 
-  async getAverageHRV(date?: string): WhoopAsyncResult<any> {
+  async getAverageHRV(date?: string): WhoopAsyncResult<AverageHRV> {
     const request = await neverthrowFetch<any>(
       `https://api.prod.whoop.com/progression-service/v3/trends/HRV?endDate=${
         date ? date : new Date().toISOString().slice(0, 10)
