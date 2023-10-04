@@ -2,7 +2,6 @@
 
 TODO:
 - [add] average calories
-- [add] average HR
 - [add] average RHR
 - [add] average respiratory rate
 
@@ -36,7 +35,7 @@ export class WhoopKitHealth {
     };
   }
 
-  async getHRV(date?: string): Promise<any> {
+  async getAverageHRV(date?: string): Promise<any> {
     const request = await fetch(
       `https://api.prod.whoop.com/progression-service/v3/trends/HRV?endDate=${
         date ? date : new Date().toISOString().slice(0, 10)
@@ -57,9 +56,30 @@ export class WhoopKitHealth {
     };
   }
 
-  async getSleepPerformance(date?: string): Promise<any> {
+  async getAverageSleepPerformance(date?: string): Promise<any> {
     const request = await fetch(
       `https://api.prod.whoop.com/progression-service/v3/trends/SLEEP_PERFORMANCE?endDate=${
+        date ? date : new Date().toISOString().slice(0, 10)
+      }`,
+      {
+        headers: requestHeaders(this.accessToken),
+      }
+    );
+
+    const response = await request.json();
+
+    return {
+      week_average: response.week_time_segment.metrics[0].metric_value_display,
+      month_average:
+        response.month_time_segment.metrics[0].metric_value_display,
+      six_month_average:
+        response.six_month_time_segment.metrics[0].metric_value_display,
+    };
+  }
+
+  async getAverageHeartRate(date?: string): Promise<any> {
+    const request = await fetch(
+      `https://api.prod.whoop.com/progression-service/v3/trends/AVERAGE_HR?endDate=${
         date ? date : new Date().toISOString().slice(0, 10)
       }`,
       {
