@@ -2,13 +2,19 @@
   "name": "whoop-sdk",
   "module": "index.ts",
   "type": "module",
+  "scripts": {
+    "example": "tsx examples/index.ts"
+  },
   "devDependencies": {
-    "bun-types": "latest"
+    "bun-types": "latest",
+    "dotenv": "^16.3.1",
+    "tsx": "^3.13.0"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "cross-fetch": "^4.0.0"
+    "cross-fetch": "^4.0.0",
+    "neverthrow": "^6.0.0"
   }
 }
