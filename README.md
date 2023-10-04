@@ -12,6 +12,18 @@ The main goal of this library is to generate requests using a user's login infor
 ## Note
 Nothing in this library is stable, tested, or should be considered for use in a production environment. Things will break and change, so use at your own will.
 
+## Getting Started
+First, install the dependencies
+NPM: `npm install`
+Yarn: `yarn install`
+PNPM: `pnpm install`
+Bun: `bun install`
+
+After that, rename the `.env.example` file to `.env`, and add your email and password for your Whoop account.
+
+Now, run the example:
+NPM/Yarn/PNPM: `npm run example`
+Bun: `bun run examples/index.ts`
 ## Coverage
 
 ### Authentication
