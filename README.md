@@ -7,6 +7,8 @@
 # This library vs. [Whoop Developer Center](https://developer.whoop.com/docs/introduction)
 The main goal of this library is to generate requests using a user's login information, not done through OAuth2. While robust, Whoop's native API does not allow nearly as much data to be shared through the API, and requires a tedious process of generating and getting an app approved. If you are looking to create something commercial I reccomend using their platform and not this.
 
+**🚧 Developer note: I have no idea if this is against their terms of service. By using this library, you agree that everything that is done to your account is by your own accord, and WhoopKit's developers do not take any responsibility for anything that may happen to your account. Which is probably nothing. Maybe.**
+
 ## Note
 Nothing in this library is stable, tested, or should be considered for use in a production environment. Things will break and change, so use at your own will.
 
