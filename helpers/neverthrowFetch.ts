@@ -11,7 +11,7 @@ export type neverthrowFetchProps = {
 
 export const neverthrowFetch = async <T>(
   url: string,
-  accessToken: string,
+  accessToken?: string,
   props?: neverthrowFetchProps
 ): WhoopAsyncResult<T> => {
   const request = await ResultAsync.fromPromise(
