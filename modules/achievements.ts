@@ -2,7 +2,7 @@ import { WhoopAchievementStreaks } from "../types/achievements";
 import { WhoopAchievementLevel } from "../types/authorization";
 import { requestHeaders } from "../types/constants";
 
-export class WhoopSDKAchievements {
+export class WhoopKitAchievements {
   constructor(private accessToken: string) {
     this.accessToken = accessToken;
   }

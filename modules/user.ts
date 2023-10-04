@@ -5,7 +5,7 @@ import {
 } from "../types/authorization";
 import { requestHeaders } from "../types/constants";
 
-export class WhoopSDKUser {
+export class WhoopKitUser {
   constructor(private accessToken: string) {
     this.accessToken = accessToken;
   }

@@ -1,17 +1,17 @@
 import "cross-fetch/polyfill";
-import { WhoopSDKAchievements } from "./modules/achievements";
-import { WhoopSDKHealth } from "./modules/health";
-import { WhoopSDKUser } from "./modules/user";
+import { WhoopKitAchievements } from "./modules/achievements";
+import { WhoopKitHealth } from "./modules/health";
+import { WhoopKitUser } from "./modules/user";
 import { LoggedInUser } from "./types/authorization";
 import { requestHeaders } from "./types/constants";
 
-export class WhoopSDK {
+export class WhoopKit {
   public accessToken: string;
   public refreshToken?: string | null;
 
-  user: WhoopSDKUser;
-  achievements: WhoopSDKAchievements;
-  health: WhoopSDKHealth;
+  user: WhoopKitUser;
+  achievements: WhoopKitAchievements;
+  health: WhoopKitHealth;
 
   constructor(accessToken: string, refreshToken?: string) {
     this.accessToken = accessToken;
@@ -27,9 +27,9 @@ export class WhoopSDK {
       );
     }
 
-    this.user = new WhoopSDKUser(this.accessToken);
-    this.achievements = new WhoopSDKAchievements(this.accessToken);
-    this.health = new WhoopSDKHealth(this.accessToken);
+    this.user = new WhoopKitUser(this.accessToken);
+    this.achievements = new WhoopKitAchievements(this.accessToken);
+    this.health = new WhoopKitHealth(this.accessToken);
   }
 
   static async login(

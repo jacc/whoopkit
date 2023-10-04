@@ -12,7 +12,7 @@ TODO:
 
 import { requestHeaders } from "../types/constants";
 
-export class WhoopSDKHealth {
+export class WhoopKitHealth {
   constructor(private accessToken: string) {
     this.accessToken = accessToken;
   }
