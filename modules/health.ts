@@ -24,8 +24,6 @@ export class WhoopKitHealth {
       this.accessToken
     );
 
-    console.log(request);
-
     return request.map((res) => ({
       score: res.gauge.gauge_score_display,
       text: res.gauge.gauge_subtext_display,
