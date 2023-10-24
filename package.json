@@ -2,6 +2,7 @@
   "name": "whoop-sdk",
   "module": "index.ts",
   "type": "module",
+  "version": "0.0.1a",
   "scripts": {
     "example": "tsx examples/index.ts"
   },
@@ -15,6 +16,7 @@
   },
   "dependencies": {
     "cross-fetch": "^4.0.0",
-    "neverthrow": "^6.0.0"
+    "neverthrow": "^6.0.0",
+    "urlcat": "^3.1.0"
   }
 }

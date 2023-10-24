@@ -1,10 +1,11 @@
+import { safeFetch } from "./helpers/safeFetch";
 import { WhoopKitAchievements } from "./modules/achievements";
+import { WhoopKitCycles } from "./modules/cycles";
 import { WhoopKitHealth } from "./modules/health";
 import { WhoopKitUser } from "./modules/user";
 import { LoggedInUser } from "./types/authorization";
 import { requestHeaders } from "./types/constants";
 import { WhoopAsyncResult } from "./types/neverthrow";
-import { safeFetch } from "./helpers/safeFetch";
 
 export class WhoopKit {
   public accessToken: string;
@@ -13,6 +14,7 @@ export class WhoopKit {
   user: WhoopKitUser;
   achievements: WhoopKitAchievements;
   health: WhoopKitHealth;
+  cycles: WhoopKitCycles;
 
   constructor(accessToken: string, refreshToken?: string) {
     this.accessToken = accessToken;
@@ -31,6 +33,7 @@ export class WhoopKit {
     this.user = new WhoopKitUser(this.accessToken);
     this.achievements = new WhoopKitAchievements(this.accessToken);
     this.health = new WhoopKitHealth(this.accessToken);
+    this.cycles = new WhoopKitCycles(this.accessToken);
   }
 
   static async login(
